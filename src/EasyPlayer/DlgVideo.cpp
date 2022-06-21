@@ -50,6 +50,9 @@ CDlgVideo::CDlgVideo(CWnd* pParent /*=NULL*/)
 
 CDlgVideo::~CDlgVideo()
 {
+    if (m_ChannelId > 0) {
+        EasyPlayer_StopManuRecording(m_ChannelId);
+    }
 }
 
 void CDlgVideo::DoDataExchange(CDataExchange* pDX)
@@ -327,6 +330,7 @@ void CDlgVideo::Play(char* szURL)
         // 设置抓图和录制存放路径 [10/10/2016 dingshuai]
         EasyPlayer_SetManuRecordPath(m_ChannelId, sFilePath);
         EasyPlayer_SetManuPicShotPath(m_ChannelId, sFilePath);
+        EasyPlayer_StartManuRecording(m_ChannelId);
 
         if (NULL != pDlgRender)
             pDlgRender->SetChannelId(m_ChannelId);

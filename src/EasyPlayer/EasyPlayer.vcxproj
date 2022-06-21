@@ -53,6 +53,7 @@
     <LinkIncremental>false</LinkIncremental>
     <OutDir>$(SolutionDir)bin\$(Configuration)\</OutDir>
     <IntDir>$(ProjectDir)bin\$(Configuration)\</IntDir>
+    <CopyCppRuntimeToOutputDir>true</CopyCppRuntimeToOutputDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -80,7 +81,8 @@
       <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <PreBuildEvent>
-      <Command>copy $(SolutionDir)lib\*.dll $(OutDir)</Command>
+      <Command>copy $(SolutionDir)lib\*.dll $(OutDir)
+xcopy $(ProjectDir)Res\ $(OutDir)Res\ /e /q</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -95,7 +97,7 @@
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
-      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
@@ -112,7 +114,8 @@
       <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <PreBuildEvent>
-      <Command>copy $(SolutionDir)lib\*.dll $(OutDir)</Command>
+      <Command>copy $(SolutionDir)lib\*.dll $(OutDir)
+xcopy $(ProjectDir)Res\ $(OutDir)Res\ /e /q</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -214,9 +217,6 @@
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="rtsp.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="$(ProjectDir)Res\**" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
