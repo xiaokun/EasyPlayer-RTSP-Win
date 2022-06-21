@@ -39,6 +39,8 @@
 
 #include "resource.h"
 
+#pragma comment(lib,"legacy_stdio_definitions.lib")
+
 // EasySkinUI的支持
 //图片控件
 #import "ImageOle.dll" named_guids
