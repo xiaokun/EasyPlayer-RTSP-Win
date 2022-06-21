@@ -1,0 +1,11 @@
+*.ilk
+*.pdb
+*.manifest
+*.h264
+.vs/
+*.exp
+.user
+
+bin/
+
+*.user
